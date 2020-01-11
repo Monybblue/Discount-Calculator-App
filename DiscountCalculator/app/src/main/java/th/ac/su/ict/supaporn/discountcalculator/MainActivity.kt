@@ -1,0 +1,49 @@
+package th.ac.su.ict.supaporn.discountcalculator
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.EditText
+import android.widget.TextView
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        var edtv1 = findViewById<EditText>(R.id.edtv1)
+        var edtv2 = findViewById<EditText>(R.id.edtv2)
+
+        var checkBox1 = findViewById<CheckBox>(R.id.checkbox1)
+        var btnCalculate = findViewById<Button>(R.id.btnCalculate)
+
+        var tvresult = findViewById<TextView>(R.id.tvresult)
+
+        btnCalculate.setOnClickListener {
+
+            var num1:Double = edtv1.text.toString().toDouble()
+            var num2:Double = edtv2.text.toString().toDouble()
+            var sum = 0.0
+            var result = 0.0
+
+            if (checkBox1.isChecked){
+
+                sum = num1-((num1*num2)/100)
+
+                result = sum+(sum*7/100)
+
+
+            }else{
+                result = num1-((num1*num2)/100)
+
+            }
+
+            tvresult.setText(result.toString())
+        }
+
+
+
+    }
+}
